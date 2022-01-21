@@ -1,0 +1,312 @@
+[
+    {
+        "id": "f6f4bb9f.05a518",
+        "type": "google-spreadsheet",
+        "z": "f7e38b71.5811d8",
+        "name": "sheet",
+        "auth": "",
+        "sheet": "1pxpSnxNue6bswzCOSzoUHYUvSQHzmnxcA9IPRzwBLpk",
+        "range": "Sheet1",
+        "method": "new",
+        "direction": "line",
+        "action": "set",
+        "clear": false,
+        "line": true,
+        "column": true,
+        "fields": "all",
+        "save": "_sheet",
+        "selfields": [
+            ""
+        ],
+        "cell_l": "",
+        "cell_c": "",
+        "input": "payload.data",
+        "output": "payload",
+        "saveType": "global",
+        "inputType": "msg",
+        "outputType": "msg",
+        "sheetType": "str",
+        "rangeType": "str",
+        "cell_lType": "str",
+        "cell_cType": "str",
+        "x": 410,
+        "y": 240,
+        "wires": [
+            [
+                "d0ef494cb68da28d",
+                "f70f2f42.2444d"
+            ],
+            [
+                "d0ef494cb68da28d",
+                "f70f2f42.2444d"
+            ]
+        ]
+    },
+    {
+        "id": "f70f2f42.2444d",
+        "type": "debug",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 670,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "d75aaf0e.2ec6e",
+        "type": "comment",
+        "z": "f7e38b71.5811d8",
+        "name": "Update Gsheet Flow using data from OpenRPA",
+        "info": "",
+        "x": 320,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f87a683d.b590e8",
+        "type": "debug",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "ouit",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "399e0e50.282692",
+        "type": "inject",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 400,
+        "wires": [
+            [
+                "48cd8313.0a3dac"
+            ]
+        ]
+    },
+    {
+        "id": "48cd8313.0a3dac",
+        "type": "google-spreadsheet",
+        "z": "f7e38b71.5811d8",
+        "name": "sheet",
+        "auth": "",
+        "sheet": "1NY_NQhjD5n8213ctyrAbe5o5z-Rm5YAxSC0E3MP1sxg",
+        "range": "Sheet1",
+        "method": "append",
+        "direction": "column",
+        "action": "get",
+        "clear": false,
+        "line": true,
+        "column": false,
+        "fields": "all",
+        "save": "_sheet",
+        "selfields": [
+            ""
+        ],
+        "cell_l": "",
+        "cell_c": "",
+        "input": "payload",
+        "output": "ouit",
+        "saveType": "global",
+        "inputType": "msg",
+        "outputType": "msg",
+        "sheetType": "str",
+        "rangeType": "str",
+        "cell_lType": "str",
+        "cell_cType": "str",
+        "x": 350,
+        "y": 440,
+        "wires": [
+            [
+                "f87a683d.b590e8",
+                "3848463b3e3abe16"
+            ],
+            [
+                "f87a683d.b590e8",
+                "3848463b3e3abe16"
+            ]
+        ]
+    },
+    {
+        "id": "4f243661.7f4e18",
+        "type": "comment",
+        "z": "f7e38b71.5811d8",
+        "name": "Read a Google sheet and send it to OpenRPA",
+        "info": "",
+        "x": 310,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ae42181812c0ac62",
+        "type": "workflow in",
+        "z": "f7e38b71.5811d8",
+        "queue": "gsheettest2",
+        "rpa": true,
+        "web": false,
+        "exchange": false,
+        "name": "gsheettest2",
+        "x": 90,
+        "y": 480,
+        "wires": [
+            [
+                "48cd8313.0a3dac"
+            ]
+        ]
+    },
+    {
+        "id": "e817bd0b54f387c7",
+        "type": "workflow out",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "form": "",
+        "state": "completed",
+        "removestate": false,
+        "x": 950,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ecfdd6053a90ca2d",
+        "type": "debug",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3848463b3e3abe16",
+        "type": "function",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "func": "msg.payload = JSON.stringify(msg.ouit)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 460,
+        "wires": [
+            [
+                "d3652b067cac0afa"
+            ]
+        ]
+    },
+    {
+        "id": "d3652b067cac0afa",
+        "type": "change",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.outdata",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 460,
+        "wires": [
+            [
+                "e817bd0b54f387c7",
+                "ecfdd6053a90ca2d"
+            ]
+        ]
+    },
+    {
+        "id": "012edb8f41c159ec",
+        "type": "workflow in",
+        "z": "f7e38b71.5811d8",
+        "queue": "writesheettest",
+        "rpa": true,
+        "web": false,
+        "exchange": false,
+        "name": "writesheettest",
+        "x": 70,
+        "y": 240,
+        "wires": [
+            [
+                "a5306255445c5e41"
+            ]
+        ]
+    },
+    {
+        "id": "d0ef494cb68da28d",
+        "type": "workflow out",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "form": "",
+        "state": "completed",
+        "removestate": false,
+        "x": 710,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a5306255445c5e41",
+        "type": "function",
+        "z": "f7e38b71.5811d8",
+        "name": "",
+        "func": "msg.payload.data = JSON.parse(msg.payload.outdt)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 240,
+        "wires": [
+            [
+                "f6f4bb9f.05a518"
+            ]
+        ]
+    }
+]
